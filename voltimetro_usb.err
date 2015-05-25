@@ -1,6 +1,7 @@
->>> Warning 203 "C:\PICC\drivers\pic18_usb.c" Line 623(1,1): Condition always TRUE
->>> Warning 216 "voltimetro_usb.c" Line 46(7,8): Interrupts disabled during call to prevent re-entrancy:  (usb_token_reset)
->>> Warning 216 "voltimetro_usb.c" Line 46(7,8): Interrupts disabled during call to prevent re-entrancy:  (usb_tbe)
->>> Warning 216 "voltimetro_usb.c" Line 46(7,8): Interrupts disabled during call to prevent re-entrancy:  (usb_cdc_flush_out_buffer)
+>>> Warning 203 "C:\PICC\drivers\pic18_usb.c" Line 640(1,1): Condition always TRUE
+>>> Warning 216 "voltimetro_usb.c" Line 46(1,2): Interrupts disabled during call to prevent re-entrancy:  (usb_token_reset)
+>>> Warning 216 "voltimetro_usb.c" Line 46(1,2): Interrupts disabled during call to prevent re-entrancy:  (usb_cdc_flush_out_buffer)
+>>> Warning 216 "voltimetro_usb.c" Line 46(1,2): Interrupts disabled during call to prevent re-entrancy:  (usb_cdc_init)
       Memory usage:   ROM=18%      RAM=21% - 24%
       0 Errors,  4 Warnings.
+Build Successful.

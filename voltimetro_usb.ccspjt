@@ -1,0 +1,16 @@
+[PROJECT]
+Target=voltimetro_usb.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.008
+Compiler=PCH
+[Target Data]
+FileList=voltimetro_usb.c
+[Directories]
+Include=C:\PICC\devices\;C:\PICC\drivers\
+[voltimetro_usb.c]
+Type=4
+[mru-list]
+1=voltimetro_usb.c
+[Units]
+Count=1
+1=voltimetro_usb (main)
