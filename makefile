@@ -20,4 +20,4 @@ Burn:
 	$(PK2) $(PK2FLAGS) $(UNIT1_FILE).hex
 
 clean:
-	rm *.cof *.err *.esym *.hex *.lst *.pjt *.STA *.sym *.tre *.MCP *.PWI *.DBK
+	rm *.cof *.err *.esym *.hex *.lst *.pjt *.STA *.sym *.tre *.MCP *.PWI *.DBK *.ccspjt *.xsym *.pdsprj*
