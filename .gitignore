@@ -216,7 +216,7 @@ pip-log.txt
 .mr.developer.cfg
 
 *.ccspjt
-*.cof
+*.cof*
 *.err
 *.esym
 *.hex
