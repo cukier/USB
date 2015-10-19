@@ -7,36 +7,26 @@
 
 #include <18F4550.h>
 
-#fuses HS, PLL1, VREGEN, USBDIV
-#use delay(clock=8MHz)
+#fuses HSPLL, MCLR, NOWDT, NOPROTECT, NOLVP, NODEBUG, USBDIV, PLL2, CPUDIV1, VREGEN, NOPBADEN
+#use delay (clock = 48000000, crystal=8000000)
 #use rs232(uart1, baud=9600)
 
-#DEFINE USB_HID_DEVICE  TRUE
-
-#define USB_EP1_TX_ENABLE  USB_ENABLE_INTERRUPT
-#define USB_EP1_TX_SIZE    64
-#define USB_EP1_RX_ENABLE  USB_ENABLE_INTERRUPT
-#define USB_EP1_RX_SIZE    64
-#define USB_CONFIG_HID_TX_SIZE 16
-#define USB_CONFIG_HID_RX_SIZE 16
-
-#define USB_CONFIG_PID 1        //Chnage Vendor Id and Product Id
-#define USB_CONFIG_VID 4660        //So that they will work with my Application
-
-#include <pic18_usb.h>
-#include <usb_desc_hid.h>
-#include <usb.c>
+#include <usb_desc_cdc.h>
+#include <usb_cdc.h>
 
 int main(void) {
+	int cont;
 
-	setup_oscillator(OSC_8MHZ);
-	usb_init_cs();
+	usb_cdc_init();
+	usb_init();
 	delay_ms(500);
 
 	while (TRUE) {
 		usb_task();
+		printf("con%u\n\r", usb_cdc_connected());
 		printf("enum%u\n\r", usb_enumerated());
-		printf("att%u\n\r", usb_attached());
+		printf("att%u\n\r\n\r", usb_attached());
+		printf(usb_cdc_putc, "%d\n\r", ++cont);
 		delay_ms(1500);
 	}
 	return 0;
