@@ -5,24 +5,39 @@
  *      Author: cuki
  */
 
-#include <24FJ64GB004.h>
+#include <18F4550.h>
 
-#fuses HS, PR
+#fuses HS, PLL1, VREGEN, USBDIV
+#use delay(clock=8MHz)
+#use rs232(uart1, baud=9600)
 
-#use delay(clock=15MHz)
-#pin_select U1TX=PIN_B0
-#pin_select U1RX=PIN_B1
-#pin_select U2TX=PIN_B2
-#pin_select U2RX=PIN_B3
-#use rs232(uart1, baud=9600, stream=IO1)
-#use rs232(uart2, baud=9600, stream=IO2)
+#DEFINE USB_HID_DEVICE  TRUE
+
+#define USB_EP1_TX_ENABLE  USB_ENABLE_INTERRUPT
+#define USB_EP1_TX_SIZE    64
+#define USB_EP1_RX_ENABLE  USB_ENABLE_INTERRUPT
+#define USB_EP1_RX_SIZE    64
+#define USB_CONFIG_HID_TX_SIZE 16
+#define USB_CONFIG_HID_RX_SIZE 16
+
+#define USB_CONFIG_PID 1        //Chnage Vendor Id and Product Id
+#define USB_CONFIG_VID 4660        //So that they will work with my Application
+
+#include <pic18_usb.h>
+#include <usb_desc_hid.h>
+#include <usb.c>
 
 int main(void) {
+
+	setup_oscillator(OSC_8MHZ);
+	usb_init_cs();
+	delay_ms(500);
+
 	while (TRUE) {
-		fprintf(IO1, "Hello 1\n\r");
-		fprintf(IO2, "Hello 2\n\r");
-		output_toggle(PIN_B2);
-		delay_ms(1000);
+		usb_task();
+		printf("enum%u\n\r", usb_enumerated());
+		printf("att%u\n\r", usb_attached());
+		delay_ms(1500);
 	}
 	return 0;
 }

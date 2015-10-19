@@ -15,9 +15,9 @@ PK2FLAGS=-E -P$(DEVICE) -M -R -J -F
 all: $(UNIT1)
 
 $(UNIT1): $(UNIT1_FILE).c
-	$(CC) $(DFLAGS) $(UNIT1_FILE).c
+	$(CC) $(HFLAGS) $(UNIT1_FILE).c
 	
-Burn:
+burn:
 	$(PK2) $(PK2FLAGS) $(UNIT1_FILE).hex
 
 clean:
